@@ -45,18 +45,19 @@ def getGPA(classGrade):
 
         if(modifier == "-"):
             returnValue = returnValue - 0.3
-        elif(modifier == "+" and baseGrade != "A"):
-            returnValue = returnValue + 0.3
+        elif(modifier == "+"):
+            if baseGrade != "A":
+                returnValue = returnValue + 0.3
         else:
             return -1
     return returnValue
             
 
 
-def addClass(name, gpa, units, ID):
+def addClass(name, gpa, units, ID, term):
     cursor.execute("""
-    INSERT INTO classes (course_name, grade_point_average, units, id)
-    VALUES(?, ?, ?, ?);""", (name, gpa, units, ID))
+    INSERT INTO classes (course_name, grade_point_average, units, id, term)
+    VALUES(?, ?, ?, ?, ?);""", (name, gpa, units, ID, term))
         
 
 isValid = True
@@ -67,6 +68,11 @@ gpa = getGPA(grade)
 
 units = input("Enter the units in the class: ")
 ID = input("Enter the ID of the class: ")
+term = input("Enter the term of the class, either Fall, Spring, or Summer: ")
+
+if(term != "Fall" and term != "Spring" and term != "Summer"):
+    print("Invalid term")
+    isValid = False
 
 if(gpa == -1):
     print("Invalid grade")
@@ -81,7 +87,8 @@ if(not isInteger(ID)):
     isValid = False
 
 if(isValid):
-    print("Adding class", name, "with an id of", ID, "and with a gpa of", gpa, "and", units, "units")
-    addClass(name, gpa, units, ID)
+    print("Added class")
+
+    addClass(name, gpa, units, ID, term)
     connection.commit()
     connection.close()
