@@ -45,7 +45,7 @@ def getGPA(classGrade):
 
         if(modifier == "-"):
             returnValue = returnValue - 0.3
-        elif(modifier == "+"):
+        elif(modifier == "+" and baseGrade != "A"):
             returnValue = returnValue + 0.3
         else:
             return -1
