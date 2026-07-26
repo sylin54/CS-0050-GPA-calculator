@@ -1,5 +1,15 @@
 #!/bin/bash
+database="classes.db"
+test="true"
+if [ "$test" = "true" ]
+then
+	rm -f "$database"
+	echo "Previous data erased."
+fi
 #Load the files for the functions here
+source ./greetings.sh
+source ./gradetoGPA.sh
+greetings
 PS3="Choose your selection by using the numbers assigned to each function: "
 #echo "(1) to Display the Data Table"
 #echo "(2) to Calculate the GPA"
