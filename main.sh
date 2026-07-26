@@ -9,6 +9,7 @@ fi
 #Load the files for the functions here
 source ./greetings.sh
 source ./gradetoGPA.sh
+source ./reportHtml.sh
 greetings
 PS3="Choose your selection by using the numbers assigned to each function: "
 #echo "(1) to Display the Data Table"
