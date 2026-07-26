@@ -4,7 +4,7 @@ greetings()
 	echo "Welcome to TerminalGPAMetrics: GPA Calculator"
 	if [ -e "$database" ]
 	then
-		echo "You have existing date in the program."
+		echo "You have existing data in the program."
 	else
 		echo "You do not have data in the program."
 		echo "You will need to create one."
@@ -14,6 +14,7 @@ CREATE TABLE IF NOT EXISTS classes (
 	id INTEGER PRIMARY KEY,
 	course_name VARCHAR(100) NOT NULL,
 	grade_point_average DOUBLE NOT NULL,
+	term VARCHAR(20) NOT NULL,
 	units INTEGER NOT NULL);
 EOF
 countData=$(sqlite3 "$database" "SELECT COUNT(*) FROM classes;")
@@ -35,13 +36,15 @@ countData=$(sqlite3 "$database" "SELECT COUNT(*) FROM classes;")
 				echo "Please enter a valid letter grade: "
 			fi
 		done
+		echo "Enter the class term (Fall/Spring)"
+		read term
 		echo "Enter the number of units in the class: "
 		read units
 		echo "Enter the ID of the class: "
 		read ID
 		sqlite3 "$database" "INSERT INTO classes
-		(course_name, grade_point_average, units, id)
-		VALUES ('$cName', $GPA,  $units, $ID);"
+		(course_name, grade_point_average, units, term, id)
+		VALUES ('$cName', $GPA,  $units, '$term', $ID);"
 	fi
 }
 	
