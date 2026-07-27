@@ -1,5 +1,4 @@
-BEGIN
-{
+BEGIN {
 	#This is the field seperator. It will be the what seperates each piece of data
 	FS = "|"
 	print "<html>"
@@ -24,8 +23,7 @@ BEGIN
 	print "<td>" $5 "</td>"
 	print "</tr>"
 }
-END
-{
+END {
 	print "</table>"
 	print "</body>"
 	print "</html>"

@@ -1,4 +1,5 @@
 #!/bin/bash
+database="classes.db"
 reportHTML()
 {
 	file="gpaReport.html"
@@ -10,8 +11,7 @@ reportHTML()
 		return
 	fi
 	#seperator used in awk file
-	sqlite3 -seperator "|" "$database" "SELECT id, course_name, grade_point_average, term, units FROM classes;" |
+	sqlite3 "$database" "SELECT id, course_name, grade_point_average, term, units FROM classes;" |
 	awk -f ./reportHtml.awk > "$file"
 	echo "HTML file created. It is saved as $file."
 }
-

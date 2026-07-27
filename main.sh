@@ -22,10 +22,12 @@ do
 	case "$option" in 
 		"Display Data Table")
 			echo "Going to function: Display Data Table "
+			python3 displayData.py "$database"
 			#displayData
 			;;
 		"Calculate GPA")
 			echo "Going to function: Calculate GPA "
+			python3 calculateGPA.py "$database"
 			#calculateGPA
 			;;
 		"Edit Data Table")
