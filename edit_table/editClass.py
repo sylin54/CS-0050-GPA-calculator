@@ -65,14 +65,6 @@ def getGPA(classGrade):
             return -1
     return returnValue
             
-def addClass(name, gpa, units, ID, term):
-    cursor.execute("""
-    INSERT INTO classes (course_name, grade_point_average, units, id, term)
-    VALUES(?, ?, ?, ?, ?);""", (name, gpa, units, ID, term))
-
-def deleteClass(ID):
-    cursor.execute("DELETE FROM classes WHERE ID = ?", (ID,))
-
 def checkClassValidity(term, gpa, units):
     if(term != "Fall" and term != "Spring" and term != "Summer"):
         print("Invalid term")
@@ -109,19 +101,25 @@ def editClass():
     if(not classValid):
         print("Invalid new Value")
         return
+    
+    cursor.execute("""
+    UPDATE classes SET
+    course_name = ?,
+    grade_point_average = ?,
+    units = ?,
+    term = ?
+    WHERE id = ?""", (name, gpa, units, term, ID))
 
-    deleteClass(ID)
-    addClass(name, gpa, units, ID, term)
     connection.commit()
 
     print("Sucessfully replace the class")
 
 cursor.execute("""
-                   SELECT course_name, ID FROM classes""")
+                   SELECT course_name, ID, grade_point_average, units, term FROM classes""")
 
 rows = cursor.fetchall()
 
 for row in rows:
-    print("Name:", row[0], "ID:",row[1])
+    print("Name:", row[0], "ID:",row[1], "GPA:", row[2], "Units:", row[3], "Term:", row[4])
 
 editClass()
