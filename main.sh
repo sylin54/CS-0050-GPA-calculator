@@ -32,6 +32,35 @@ do
 			;;
 		"Edit Data Table")
 			echo "Going to function: Edit Data Table "
+			select edit in "Add a Class" "Edit a Class" "Remove a Class"
+			do 
+				case "$edit" in 
+				"Add a Class")
+				(
+					cd edit_table && python3 addClass.py
+				)
+				break
+				;;
+				"Edit a Class")
+				(
+					cd edit_table && python3 editClass.py
+				)
+				break
+				;;
+				"Remove a Class")
+				(
+					cd edit_table && python3 removeClass.py
+				)
+				break
+				;;
+				"Return to Menu")
+				break
+				;;
+				*)
+					echo "Invalid Input"
+				;;
+				esac
+			done	
 			#editData
 			;;
 		"Search Data Table")

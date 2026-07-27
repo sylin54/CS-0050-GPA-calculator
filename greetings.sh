@@ -36,7 +36,7 @@ countData=$(sqlite3 "$database" "SELECT COUNT(*) FROM classes;")
 				echo "Please enter a valid letter grade: "
 			fi
 		done
-		echo "Enter the class term (Fall/Spring)"
+		echo "Enter the class term (Fall/Spring/Summer)"
 		read term
 		echo "Enter the number of units in the class: "
 		read units
