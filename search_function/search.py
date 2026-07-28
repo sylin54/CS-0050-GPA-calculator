@@ -19,6 +19,7 @@ def isFloat(number):
     except ValueError:
         return False
 
+#Get input of all of the search parameters
 ID = sys.argv[1]
 courseName = sys.argv[2]
 gpaFloor = sys.argv[3]
@@ -33,6 +34,7 @@ cursor.execute("SELECT * FROM classes")
 
 classes = cursor.fetchall()
 
+#loop through every class and see if it matches all of the inputs
 for course in classes:
     #go through every one and skip if it doesn't match
     if len(ID) > 0:

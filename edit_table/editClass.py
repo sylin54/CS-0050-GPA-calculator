@@ -10,6 +10,7 @@ def isInteger(number):
     except ValueError:
         return False
 
+#make sure the id actually exists
 def checkIDValidity(classID):
     if(not isInteger(classID)):
         return False
@@ -23,6 +24,7 @@ def checkIDValidity(classID):
 
     return True
 
+#convert a string grade into a gpa
 def getGPA(classGrade):
 
     returnValue = 0
@@ -64,7 +66,7 @@ def getGPA(classGrade):
         else:
             return -1
     return returnValue
-            
+
 def checkClassValidity(term, gpa, units):
     if(term != "Fall" and term != "Spring" and term != "Summer"):
         print("Invalid term")
@@ -117,6 +119,7 @@ def editClass():
 cursor.execute("""
                    SELECT course_name, ID, grade_point_average, units, term FROM classes""")
 
+#print out all of the classes before hand so the sure knows which one to edit
 rows = cursor.fetchall()
 
 for row in rows:

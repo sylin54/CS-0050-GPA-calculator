@@ -10,6 +10,7 @@ def isInteger(number):
     except ValueError:
         return False
 
+#Converts a string grade into a GPA
 def getGPA(classGrade):
 
     returnValue = 0
@@ -70,6 +71,7 @@ units = input("Enter the units in the class: ")
 ID = input("Enter the ID of the class: ")
 term = input("Enter the term of the class, either Fall, Spring, or Summer: ")
 
+#check for input validity
 if(term != "Fall" and term != "Spring" and term != "Summer"):
     print("Invalid term")
     isValid = False
@@ -86,6 +88,7 @@ if(not isInteger(ID)):
     print("Invalid ID")
     isValid = False
 
+#Check for duplicate IDs
 cursor.execute("""SELECT course_name FROM classes WHERE id = ?""", (ID,))
 
 potentialDuplicates = cursor.fetchall()
