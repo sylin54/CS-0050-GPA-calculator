@@ -59,4 +59,4 @@ for course in classes:
     if len(unitsCeiling) > 0 and (not isFloat(unitsCeiling) or float(unitsCeiling) < course[4]):
         continue
 
-    print("adding course", course[1])
+    print("Course ID:", course[0], "Course Name:", course[1], "Course GPA:", course[2], "Course Term:", course[3], "Course Units:", course[4])
