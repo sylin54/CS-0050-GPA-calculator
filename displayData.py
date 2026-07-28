@@ -19,7 +19,7 @@ import sys
 def display_data_table(cursor):
     output_method = input("choose ouput method(In Program or HTML): ")
 
-    if output_method == "In Program":
+    if output_method.lower() == "in program":
         #pulls records from database to format for terminal output
         cursor.execute("SELECT course_name, units, grade_point_average, term FROM classes;")
         records = cursor.fetchall()
@@ -67,7 +67,7 @@ BEGIN {
         if os.path.exists(temp_file):
             os.remove(temp_file)
 
-    elif output_method == "HTML":
+    elif output_method.lower() == "html":
         #calling group members external HTML report
 	#CHANGE generate_report_placeholder.sh to actual file name
         subprocess.run(["bash", "-c","source ./reportHtml.sh && reportHTML"])
