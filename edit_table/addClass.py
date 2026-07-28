@@ -86,6 +86,14 @@ if(not isInteger(ID)):
     print("Invalid ID")
     isValid = False
 
+cursor.execute("""SELECT course_name FROM classes WHERE id = ?""", (ID,))
+
+potentialDuplicates = cursor.fetchall()
+if len(potentialDuplicates) > 0:
+    print("Duplicate ID")
+    isValid = False
+
+
 if(isValid):
     print("Added class")
 
