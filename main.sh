@@ -11,6 +11,8 @@ source ./greetings.sh
 source ./gradetoGPA.sh
 source ./reportHtml.sh
 greetings
+
+#defines the prompt text that appears before the select statement
 PS3=$'\nChoose your selection by using the numbers assigned to each function.\nReminder:(1) Display, (2) Calculate GPA, (3) Edit, (4) Search, (5) Exit \n'
 #echo "(1) to Display the Data Table"
 #echo "(2) to Calculate the GPA"
@@ -32,6 +34,8 @@ do
 			;;
 		"Edit Data Table")
 			echo "Going to function: Edit Data Table "
+			#sets the selecrtion prompt message to nothing so it won't prompt when we select
+			PS3=$''
 			select edit in "Add a Class" "Edit a Class" "Remove a Class"
 			do 
 				case "$edit" in 
@@ -58,10 +62,13 @@ do
 				;;
 				*)
 					echo "Invalid Input"
+					break
 				;;
 				esac
 			done	
 			#editData
+			#Reset to ps3 to the other select statemetn
+			PS3=$'\nChoose your selection by using the numbers assigned to each function.\nReminder:(1) Display, (2) Calculate GPA, (3) Edit, (4) Search, (5) Exit \n'
 			;;
 		"Search Data Table")
 			echo "Going to function: Search Data Table "

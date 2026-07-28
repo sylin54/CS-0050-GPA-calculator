@@ -15,7 +15,7 @@ def getGPA(classGrade):
 
     returnValue = 0
 
-    if(len(classGrade) > 2):
+    if(len(classGrade) > 2 or len(classGrade) < 1):
         return -1
 
     baseGrade = classGrade[0]
