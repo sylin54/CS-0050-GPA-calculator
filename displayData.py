@@ -21,7 +21,7 @@ def display_data_table(cursor):
 
     if output_method.lower() == "in program":
         #pulls records from database to format for terminal output
-        cursor.execute("SELECT course_name, units, grade_point_average, term FROM classes;")
+        cursor.execute("SELECT id, course_name, units, grade_point_average, term FROM classes;")
         records = cursor.fetchall()
 
         if not records:
@@ -33,7 +33,7 @@ def display_data_table(cursor):
         with open(temp_file, "w") as f:
             #printing rows from records into file
             for row in records:
-                f.write(f"{row[0]}|{row[1]}|{row[2]}|{row[3]}\n")
+                f.write(f"{row[0]}|{row[1]}|{row[2]}|{row[3]}|{row[4]}\n")
 
 	# command 5 (Bash): wc -l -> counts number of entries exported to file
         lines_proc = subprocess.run(["wc", "-l", temp_file], capture_output=True, text=True)
@@ -53,11 +53,11 @@ BEGIN {
 	FS="[|]"
 
 	print "------------------------------------------------------------------"
-	printf "%-20s | %-6s | %-12s | %-12s\n", "Course Name", "Units", "Grade Point", "Term"
+	printf "%-10s | %-20s | %-6s | %-12s | %-12s\n", "Course ID", "Course Name", "Units", "Grade Point", "Term"
 	print "------------------------------------------------------------------"
 }
 {
-		printf "%-20s | %-6s | %-12s | %-12s\n", $1, $2, $3, $4
+		printf "%-10s | %-20s | %-6s | %-12s | %-12s\n", $1, $2, $3, $4, $5
 	}
 	'''
 	#runs the data file into formated version with awk
