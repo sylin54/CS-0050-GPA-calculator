@@ -1,6 +1,6 @@
 #!/bin/bash
 database="classes.db"
-test="true"
+test="false"
 if [ "$test" = "true" ]
 then
 	rm -f "$database"
@@ -11,7 +11,7 @@ source ./greetings.sh
 source ./gradetoGPA.sh
 source ./reportHtml.sh
 greetings
-PS3="Choose your selection by using the numbers assigned to each function: "
+PS3=$'\nChoose your selection by using the numbers assigned to each function.\nReminder:(1) Display, (2) Calculate GPA, (3) Edit, (4) Search, (5) Exit \n'
 #echo "(1) to Display the Data Table"
 #echo "(2) to Calculate the GPA"
 #echo "(3) to Edit the Data Table"
@@ -65,10 +65,21 @@ do
 			;;
 		"Search Data Table")
 			echo "Going to function: Search Data Table "
+			(
+			cd search_function && perl searchInterface.pl
+			)
 			#search
 			;;
 		"Exit")
 			echo "You are exiting the GPA Calculator"
+			echo "Would you like to delete your data?"
+			echo "Press Y to delete your data, and ENTER to skip."
+			read deleteAnswer
+			if [[ "$deleteAnswer" == "Y" || "$deleteAnswer" == "y" ]];
+			then
+				rm -f "$database"
+				echo "Previous data erased."
+			fi
 			break
 			;;
 		*)
