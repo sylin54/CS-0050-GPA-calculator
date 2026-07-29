@@ -28,8 +28,6 @@ term = sys.argv[5]
 unitsFloor = sys.argv[6]
 unitsCeiling = sys.argv[7]
 
-print(ID)
-
 cursor.execute("SELECT * FROM classes")
 
 classes = cursor.fetchall()

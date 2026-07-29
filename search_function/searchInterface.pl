@@ -28,9 +28,3 @@ chomp($unitsCeiling);
 
 # Returns 0 on success
 my $status = system("python3", "search.py", $id, $courseName, $gpaFloor, $gpaCeiling, $term, $unitsFloor, $unitsCeiling);
-
-if ($status == 0) {
-    print "Python script executed successfully.\n";
-} else {
-    print "Python script failed with exit code: $status\n";
-}
