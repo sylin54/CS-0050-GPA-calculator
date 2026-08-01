@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
-# IMPORTANT: PROTOTYPE
-# Code was pulled from here to create two functions, but this file is not used by the program.
 # Creator: Lilyana
-
+# Copy of gpa, used to debug by other team members without affecting the original file.
 #------------------------------------- Imported Modules ---------------------------------------
 # os: allows python to interact directly with the OS file structure(changing file permissions)
 # sqlite3: provides database API to connect to ("classes.db")
@@ -17,6 +15,8 @@ import subprocess
 # =====================
 
 # ====================================================================================
+#DELETE AFTER DONE:
+
 def presentation_data():
 
     connect = sqlite3.connect("classes.db")
@@ -55,18 +55,18 @@ def greetings():
     subprocess.run(["clear"])
 
     # command 2 (Bash): whoami -> prints exact username of current user ID
-    user_proc = subprocess.run(["whoami"]), capture_output=True, text=True)
+    user_proc = subprocess.run(["whoami"], capture_output=True, text=True)
     username = user_proc.stdout.strip()
 
     # command 3 (Bash): date -> displays current date and time
-    date_proc = subprocess.run(["date"]), capture_output=True, text=True)
+    date_proc = subprocess.run(["date"], capture_output=True, text=True)
     current_date = date_proc.stdout.strip()
 
     # command 4 (Bash): uptime -> gets host performance stats
-    uptime_proc = subprocess.run(["uptime"]), capture_output=True, text=True)
+    uptime_proc = subprocess.run(["uptime"], capture_output=True, text=True)
     sys_status = uptime_proc.stdout.strip()
 
-    print("--------------------------------------------------------------"
+    print("--------------------------------------------------------------")
     print(f" Welcome to TerminalGPAMetrics, {username}")
     print(f" Session Started: {current_date}")
     print(f" System Status: {sys_status}")
@@ -92,37 +92,37 @@ def display_data_table(cursor):
                 f.write(f"{row[0]}|{row[1]}|{row[2]}|{row[3]}\n")
 
 	# command 5 (Bash): wc -l -> counts number of entries exported to file
-	lines_proc = subprocess.run(["wc", "-l", temp_file], capture_output=True, text=True)
-	total = lines_proc.stdout.strip().split()[0]}
-	print(f"\nTotal active records processed: {total}")
+        lines_proc = subprocess.run(["wc", "-l", temp_file], capture_output=True, text=True)
+        total = lines_proc.stdout.strip().split()[0]
+        print(f"\nTotal active records processed: {total}")
 
-	print("\n----- Data Table (formatted in AWK) -----")
+        print("\n----- Data Table (formatted in AWK) -----")
 
 	# command 6 (Bash) awk -> formats lines into structured columns
-	awk = (
-	    'BEGIN {FS="|"; printf "%-20s | %-6s | %-12s | %-12s\n", "Course Name", "Units", "Grade Point", "Term";'
+        awk = (
+            'BEGIN {FS="|"; printf "%-20s | %-6s | %-12s | %-12s\n", "Course Name", "Units", "Grade Point", "Term";'
             ' print "-----------------------------------------------------------------"}'
             '{printf "%-20s | %-6s | %-12s | %-12s\n", $1, $2, $3, $4}'
-	)
+	    )
 	#runs the data file into formated version with awk
-	subprocess.run(["awk", awk, temp_file])
+        subprocess.run(["awk", awk, temp_file])
 
 	#deletes temp file
-	if os.path.exists(temp_file):
-	    os.remove(temp_file)
+        if os.path.exists(temp_file):
+            os.remove(temp_file)
 
-    elif output_method = "HTML":
+    elif output_method == "HTML":
         #calling group members external HTML report
 	#CHANGE generate_report_placeholder.sh to actual file name
-	subprocess.run(["bash", "generate_report_placeholder.sh"])
+        subprocess.run(["bash", "generate_report_placeholder.sh"])
 
-	print("\nHTML report generation complete. Verifying file safety properties:")
+        print("\nHTML report generation complete. Verifying file safety properties:")
 
 	# command 7 (Bash): ls -l -> verifies permmissions of the file
-	subprocess.run(["ls", "-l", "gpa_report.html"])
+        subprocess.run(["ls", "-l", "gpa_report.html"])
 
     else:
-	print("\nInvalid output method selection.")
+	    print("\nInvalid output method selection.")
 
 # =======================================================================================
 def calc_gpa(cursor):
@@ -166,7 +166,7 @@ def edit_data_table(connection, cursor):
     if change_method == "add":
         new_course = input("Enter course name: ")
         new_units = int(input("Enter units: "))
-        new_grade = float(input(("Enter letter grade: "))
+        new_grade = float(input("Enter letter grade: "))
         new_term = input("Enter term: ")
 
         cursor.execute(

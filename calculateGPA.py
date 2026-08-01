@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Creator: Lilyana
 #------------------------------------- Imported Modules ---------------------------------------
 # os: allows python to interact directly with the OS file structure(changing file permissions)
 # sqlite3: provides database API to connect to ("classes.db")

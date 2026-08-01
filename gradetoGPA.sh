@@ -1,4 +1,6 @@
 #!/bin/bash
+#Creator: Avissa Perera
+# Used in the greetings.sh file to calculate the GPA of the first piece of data. Uses case to go through all of the possible inputs.
 gradetoGPA()
 {
 	grade="$1"
