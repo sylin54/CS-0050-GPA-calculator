@@ -1,6 +1,7 @@
 #!/bin/bash
 greetings()
 {
+	clear
 	echo "Welcome to TerminalGPAMetrics: GPA Calculator"
 	if [ -e "$database" ]
 	then
