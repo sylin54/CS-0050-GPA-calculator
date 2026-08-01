@@ -75,6 +75,7 @@ BEGIN {
         print("\nHTML report generation complete. Verifying file safety properties:")
 
 	# command 7 (Bash): ls -l -> verifies permmissions of the file
+        subprocess.run(["chmod", "644", "gpaReport.html"])
         subprocess.run(["ls", "-l", "gpaReport.html"])
 
     else:

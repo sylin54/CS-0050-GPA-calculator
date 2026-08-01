@@ -1,3 +1,6 @@
+#!/usr/bin/awk -f
+# Creator: Avissa Perera
+# This file is related to reportHtml.sh. It uses a mix of HTML and AWK in order to produce the contents of gpaReport.html.
 BEGIN {
 	#This is the field seperator. It will be the what seperates each piece of data
 	FS = "|"

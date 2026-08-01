@@ -1,4 +1,7 @@
 #!/bin/bash
+# Creator: Avissa Perera
+# This and reportHtml.awk are meant for the Display Data function. These two will be part of the HTML option inside of the Display Data function. It checks if the user has data saved
+# and uses sqlite to pull from the data, which is sent to the awk file.
 database="classes.db"
 reportHTML()
 {

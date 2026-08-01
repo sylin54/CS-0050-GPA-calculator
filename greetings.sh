@@ -1,4 +1,7 @@
 #!/bin/bash
+# Creator: Avissa Perera
+# Notes: This is the function that is called by main.sh. It welcomes the user to the program, and checks to see if they already have data saved.
+# If they do, they go straight to the menu. If not, the user is required to enter one set of data before moving on to the menu.
 greetings()
 {
 	#clears terminal screen

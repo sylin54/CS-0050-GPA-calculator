@@ -1,4 +1,10 @@
 #!/bin/bash
+# Creator: Avissa Perera
+# This code has the menu. Users will be able to select 5 different options. I used select and case in order for this code to function. In most cases, with valid input, the program will
+# take the user straight to the file (or directory and then file) that the functions are located in. For Edit, there are multiple functions, so the code will use another case expression
+# to send the user into their preferred function. As for Exit, it will ask if the user wants to delete their data. The user is able to skip it, but if they choose to do so, their data 
+# will be erased.
+
 database="classes.db"
 test="false"
 if [ "$test" = "true" ]
@@ -67,7 +73,7 @@ do
 				esac
 			done	
 			#editData
-			#Reset to ps3 to the other select statemetn
+			#Reset to ps3 to the other select statement
 			PS3=$'\nChoose your selection by using the numbers assigned to each function.\nReminder:(1) Display, (2) Calculate GPA, (3) Edit, (4) Search, (5) Exit \n'
 			;;
 		"Search Data Table")
