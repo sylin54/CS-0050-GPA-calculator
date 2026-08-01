@@ -1,3 +1,5 @@
+#Benjamin Jobart - Wrote Code
+
 sqlite3 ../classes.db << EOF
 CREATE TABLE IF NOT EXISTS classes (
 id INTEGER PRIMARY KEY,

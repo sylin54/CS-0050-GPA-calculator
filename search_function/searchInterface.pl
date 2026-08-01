@@ -1,3 +1,5 @@
+#Benjamin Jobart - Wrote Code
+
 print "Would you like your class to be a specific ID? (Press Enter to skip) ";
 $id = <STDIN>;
 chomp($id);
