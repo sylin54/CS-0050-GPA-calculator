@@ -1,8 +1,23 @@
 #!/bin/bash
 greetings()
 {
-	clear
-	echo "Welcome to TerminalGPAMetrics: GPA Calculator"
+	#clears terminal screen
+    	clear
+    	echo "Welcome to TerminalGPAMetrics: GPA Calculator"
+
+    	#prints exact username of current user ID
+    	username=$(whoami)
+    	echo "Current user: $username"
+
+    	#displays current date and time
+    	currentDate=$(date)
+    	echo "Session started: $currentDate"
+
+    	#gets host performance stats
+    	sysStats=$(uptime)
+    	echo "System Status: $sysStats"
+    	echo " "
+
 	if [ -e "$database" ]
 	then
 		echo "You have existing data in the program."

@@ -114,7 +114,7 @@ def editClass():
 
     connection.commit()
 
-    print("Sucessfully replace the class")
+    print("Sucessfully replaced the class")
 
 cursor.execute("""
                    SELECT course_name, ID, grade_point_average, units, term FROM classes""")
